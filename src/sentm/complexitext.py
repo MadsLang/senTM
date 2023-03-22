@@ -52,10 +52,8 @@ def _create_lemma_dict(
     if min_max_scaled:
         lemmas.freq = _min_max_scale(lemmas.freq, feature_range=min_max_scaled)
 
-    # set the 'lemma' column as the index of the dataframe and convert it to a dictionary
     data = lemmas.set_index("lemma").to_dict("split")
 
-    # transform the dictionary to the desired format
     lemma_dict = defaultdict(dict)
 
     for i, lemma in enumerate(data["index"]):
